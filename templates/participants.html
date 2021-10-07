@@ -11,9 +11,11 @@
 <script>
 function checkConfirmedItem(confirmed, hub){
    var r = /\d+/;
+   var registerCount = parseInt(document.getElementById("registerCount").innerHTML.match(r)) + 1;
+   document.getElementById("registerCount").innerHTML = registerCount + " total registered";
    if (confirmed == 'True'){
-        var registerCount = parseInt(document.getElementById("registerCount").innerHTML.match(r)) + 1;
-        document.getElementById("registerCount").innerHTML = registerCount + " total registered";
+        var participantCount = parseInt(document.getElementById("participantCount").innerHTML.match(r)) + 1;
+        document.getElementById("participantCount").innerHTML = participantCount + " total participants (remote + in-person and confirmed)";
         if (hub == 'UIUC'){
            var newSum = parseInt(document.getElementById("UIUC_confirmed").innerHTML.match(r)) + 1;
            document.getElementById("UIUC_confirmed").innerHTML = newSum + " confirmed";
@@ -32,8 +34,8 @@ function checkConfirmedItem(confirmed, hub){
         }
    } else{
         if (hub == 'None'){
-        var registerCount = parseInt(document.getElementById("registerCount").innerHTML.match(r)) + 1;
-        document.getElementById("registerCount").innerHTML = registerCount + " total registered";
+        var participantCount = parseInt(document.getElementById("participantCount").innerHTML.match(r)) + 1;
+        document.getElementById("participantCount").innerHTML = participantCount + " total participants (remote + in-person and confirmed)";
         var remoteCount = parseInt(document.getElementById("remoteCount").innerHTML.match(r)) + 1;
         document.getElementById("remoteCount").innerHTML = remoteCount + " remote participants";
         }
@@ -66,6 +68,7 @@ function checkRemote(first_name, last_name, inperson){
     <!-- <br> -->
     <br>
     <h2 id="registerCount">0 total registered</h2>
+    <h2 id="participantCount">0 total participants (remote + in-person and confirmed)</h2>
     <h2 id="remoteCount">0 remote participants</h2>
     <br> <br>
     <table class="table table-hover">
