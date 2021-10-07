@@ -31,7 +31,7 @@ function checkConfirmedItem(confirmed, hub){
            document.getElementById("Princeton_remain").innerHTML = remain + " spots remaining";
         }
    } else{
-        if (confirmed == 'N/A'){
+        if (hub == 'None'){
         var registerCount = parseInt(document.getElementById("registerCount").innerHTML.match(r)) + 1;
         document.getElementById("registerCount").innerHTML = registerCount + " total registered";
         var remoteCount = parseInt(document.getElementById("remoteCount").innerHTML.match(r)) + 1;
