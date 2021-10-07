@@ -12,6 +12,8 @@
 function checkConfirmedItem(confirmed, hub){
    var r = /\d+/;
    if (confirmed == 'True'){
+        var registerCount = parseInt(document.getElementById("registerCount").innerHTML.match(r)) + 1;
+        document.getElementById("registerCount").innerHTML = registerCount + " total registered";
         if (hub == 'UIUC'){
            var newSum = parseInt(document.getElementById("UIUC_confirmed").innerHTML.match(r)) + 1;
            document.getElementById("UIUC_confirmed").innerHTML = newSum + " confirmed";
@@ -28,6 +30,19 @@ function checkConfirmedItem(confirmed, hub){
            var remain = 30 - newSum;
            document.getElementById("Princeton_remain").innerHTML = remain + " spots remaining";
         }
+   } else{
+        if (confirmed == 'N/A'){
+        var registerCount = parseInt(document.getElementById("registerCount").innerHTML.match(r)) + 1;
+        }
+        if (hub == 'UIUC'){
+           var newSum = parseInt(document.getElementById("UIUC_await").innerHTML.match(r)) + 1;
+           document.getElementById("UIUC_await").innerHTML = newSum + " awaiting confirmation";
+        }else if (hub == 'APC'){
+           var newSum = parseInt(document.getElementById("APC_await").innerHTML.match(r)) + 1;
+           document.getElementById("APC_await").innerHTML = newSum + " awaiting confirmation";
+        }else if (hub == 'Princeton'){
+           var newSum =  parseInt(document.getElementById("Princeton_await").innerHTML.match(r)) + 1;
+           document.getElementById("Princeton_await").innerHTML = newSum + " awaiting confirmation";
    }
 }
 
@@ -64,6 +79,11 @@ function checkRemote(first_name, last_name, inperson){
           <td id="UIUC_remain">50 spots remaining</td>
           <td id="APC_remain">25 spots remaining</td>
           <td id="Princeton_remain">30 spots remaining</td>
+        </tr>
+        <tr>
+          <td id="UIUC_await">0 awaiting confirmation</td>
+          <td id="APC_await">0 awaiting confirmation</td>
+          <td id="Princeton_await">0 awaiting confirmation</td>
         </tr>
       </tbody>
     </table>
